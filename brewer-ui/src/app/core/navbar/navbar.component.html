@@ -1,0 +1,9 @@
+  <div class="navbar">
+    <div class="container" >
+        <a  (click)="display = true" ><i class="fa fa-bars navbar-toggle"></i></a>
+        <p-sidebar [(visible)]="display" position="right" >
+          <p-panelMenu [model]="items" [style]="{'width':'268px'}"   styleClass="ui-sidebar-sm"></p-panelMenu>
+        </p-sidebar>
+    </div>
+  </div>
+

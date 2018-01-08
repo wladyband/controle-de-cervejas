@@ -1,0 +1,89 @@
+<div class="container">
+  <form autocomplete="off">
+
+    <div class="ui-g">
+      <div class="ui-g-12">
+        <h1>Nova Cerveja</h1>
+      </div>
+
+
+      <div class="ui-g-6 ui-md-2 ui-fluid">
+        <label>SKU </label>
+        <input pInputText type="text">
+      </div>
+
+      <div class="ui-g-12 ui-md-6 ui-fluid">
+        <label>Nome </label>
+        <input pInputText type="text">
+      </div>
+
+      <div class="ui-g-12 ui-fluid">
+        <label>Descrição</label>
+        <textarea pInputTextarea rows="3" name="descricao" ></textarea>
+      </div>
+
+      <div class="ui-g-12 ui-lg-3 ui-md-4 ui-fluid">
+        <label>Estilo</label>
+        <p-dropdown [options]="estilos" placeholder="Selecione"
+          [autoWidth]="false">
+        </p-dropdown>
+      </div>
+
+      <div class="ui-g-12 ui-lg-3 ui-md-4 ui-fluid">
+        <label>Sabor</label>
+        <p-dropdown [options]="sabor" placeholder="Selecione"
+          [autoWidth]="false">
+        </p-dropdown>
+      </div>
+
+      <div class="ui-g-6 ui-lg-3 ui-md-4 ui-fluid">
+        <label >Teor Alcoólico </label>
+        <div class="input-group">
+          <input pInputText type="text">
+            <div class="input-group-addon">%</div>
+        </div>
+      </div>
+      <div class="ui-g-12 ui-lg-3 ui-md-4 ui-fluid">
+        <label>Origem</label>
+     <!--   <p-radioButton name="nacional" value="Nacional" label="Nacional" [options]="origem"></p-radioButton> -->
+<!--  <p-radioButton name="group1" value="Option 1" label="Option 1" [(ngModel)]="val1" inputId="opt1"></p-radioButton> -->
+          <div>
+            <div class="radio  radio-inline">
+                <p-radioButton name="group1" value="Nacional" label="Nacional" [(ngModel)]="origem" inputId="origem"></p-radioButton>
+            </div>
+            <div class="radio  radio-inline">
+                <p-radioButton name="group1" value="Internacional" label="Internacional" [(ngModel)]="origem" inputId="origem"></p-radioButton>
+            </div>
+          </div>
+      <!--  Selected Value = {{origem||'none'}} -->
+      </div>
+      <div class="ui-g-12 ui-lg-3 ui-md-4 ui-fluid">
+            <label>Preço </label>
+            <div class="input-group">
+                <div class="input-group-addon" currencyMask [options]="{ prefix: '', thousands: '.', decimal: ',', allowNegative: false }">R$</div>
+                <input pInputText type="text" >
+          </div>
+      </div>
+
+      <div class="ui-g-12 ui-lg-3 ui-md-4 ui-fluid">
+          <label>Comissão </label>
+          <div class="input-group">
+              <input pInputText type="text" currencyMask [options]="{ prefix: '', thousands: '.', decimal: ',', allowNegative: false }">
+              <div class="input-group-addon">%</div>
+        </div>
+     </div>
+
+     <div class="ui-g-6 ui-md-2 ui-fluid">
+        <label>Estoque </label>
+        <input pInputText type="text" currencyMask [options]="{ prefix: '', thousands: '.', decimal: ',', allowNegative: false, precision: 0 }">
+      </div>
+
+      <div class="ui-g-12">
+        <button pButton type="submit" label="Salvar"></button>
+        <button pButton type="button" label="Novo" class="ui-button-info"></button>
+        <a href="javascript:;">Voltar para a pesquisa</a>
+      </div>
+    </div>
+
+  </form>
+</div>

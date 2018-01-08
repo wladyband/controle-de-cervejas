@@ -1,0 +1,61 @@
+<div class="container">
+  <form autocomplete="off">
+
+    <div class="ui-g">
+      <div class="ui-g-12">
+        <h1>Novo Usuário</h1>
+      </div>
+
+
+      <div class="ui-g-12  ui-fluid">
+        <label>Nome </label>
+        <input pInputText type="text">
+      </div>
+
+
+      <div class="ui-g-12 ui-md-8 ui-fluid">
+        <label>Email</label>
+        <input pInputText type="text">
+      </div>
+
+
+      <div class="ui-g-12 ui-lg-3 ui-md-4 ui-fluid">
+        <label>Data de Nascimento</label>
+        <input pInputText type="text">
+      </div>
+
+      <div class="ui-g-12 ui-lg-6 ui-md-6 ui-fluid">
+        <label>Senha</label>
+        <input pInputText type="text">
+      </div>
+      <div class="ui-g-12 ui-lg-6 ui-md-6 ui-fluid">
+        <label>Confirmação de Senha</label>
+        <input pInputText type="text">
+      </div>
+
+      <div class="ui-g-3 ui-lg-3 ui-md-3 ui-fluid" >
+          <label>Status</label>
+            <div class="ui-g-12"><p-checkbox name="group1" value="Ativo" label="Ativo" [(ngModel)]="status" inputId="status"></p-checkbox></div>
+      </div>
+
+      <div class="ui-g-12 ui-lg-3 ui-md-4 ui-fluid">
+          <label>Tipo de Pessoa</label>
+            <div>
+              <div class="radio  radio-inline">
+                  <div class="ui-g-8 ui-lg-6 ui-md-8">Administrador<p-checkbox name="group1"   [(ngModel)]="grupo" inputId="status"></p-checkbox></div>
+              </div>
+              <div class="radio  radio-inline">
+                  <div class="ui-g-4 ">Usuário<p-checkbox name="group1" value="Usuário"  [(ngModel)]="grupo" inputId="status"></p-checkbox></div>
+              </div>
+            </div>
+
+        </div>
+      <div class="ui-g-12">
+        <button pButton type="submit" label="Salvar"></button>
+        <button pButton type="button" label="Novo" class="ui-button-info"></button>
+        <a href="javascript:;">Voltar para a pesquisa</a>
+      </div>
+    </div>
+
+  </form>
+</div>
