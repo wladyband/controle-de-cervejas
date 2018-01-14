@@ -1,3 +1,4 @@
+import { SharedModule } from './../shared/shared.module';
 import { CurrencyMaskModule } from 'ng2-currency-mask';
 import { ButtonModule } from 'primeng/components/button/button';
 import { FormsModule } from '@angular/forms';
@@ -7,6 +8,7 @@ import { CommonModule } from '@angular/common';
 import { CevejasCadastroComponent } from './cevejas-cadastro/cevejas-cadastro.component';
 
 import { InputTextareaModule, SelectButtonModule, DropdownModule, RadioButtonModule, CodeHighlighterModule } from 'primeng/primeng';
+import {DialogModule} from 'primeng/primeng';
 
 @NgModule({
   imports: [
@@ -19,7 +21,10 @@ import { InputTextareaModule, SelectButtonModule, DropdownModule, RadioButtonMod
     DropdownModule,
     RadioButtonModule,
     CodeHighlighterModule,
-    CurrencyMaskModule
+    DialogModule,
+    CurrencyMaskModule,
+
+    SharedModule
   ],
   declarations: [CevejasCadastroComponent],
   exports: [

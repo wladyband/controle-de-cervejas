@@ -22,12 +22,6 @@
         <textarea pInputTextarea rows="3" name="descricao" ></textarea>
       </div>
 
-      <div class="ui-g-12 ui-lg-3 ui-md-4 ui-fluid">
-        <label>Estilo</label>
-        <p-dropdown [options]="estilos" placeholder="Selecione"
-          [autoWidth]="false">
-        </p-dropdown>
-      </div>
 
       <div class="ui-g-12 ui-lg-3 ui-md-4 ui-fluid">
         <label>Sabor</label>
@@ -43,20 +37,7 @@
             <div class="input-group-addon">%</div>
         </div>
       </div>
-      <div class="ui-g-12 ui-lg-3 ui-md-4 ui-fluid">
-        <label>Origem</label>
-     <!--   <p-radioButton name="nacional" value="Nacional" label="Nacional" [options]="origem"></p-radioButton> -->
-<!--  <p-radioButton name="group1" value="Option 1" label="Option 1" [(ngModel)]="val1" inputId="opt1"></p-radioButton> -->
-          <div>
-            <div class="radio  radio-inline">
-                <p-radioButton name="group1" value="Nacional" label="Nacional" [(ngModel)]="origem" inputId="origem"></p-radioButton>
-            </div>
-            <div class="radio  radio-inline">
-                <p-radioButton name="group1" value="Internacional" label="Internacional" [(ngModel)]="origem" inputId="origem"></p-radioButton>
-            </div>
-          </div>
-      <!--  Selected Value = {{origem||'none'}} -->
-      </div>
+
       <div class="ui-g-12 ui-lg-3 ui-md-4 ui-fluid">
             <label>Preço </label>
             <div class="input-group">
@@ -64,7 +45,25 @@
                 <input pInputText type="text" >
           </div>
       </div>
+      <div class="ui-g-12 ui-lg-2 ui-md-4 ui-fluid">
+          <label>Origem</label>
+       <!--   <p-radioButton name="nacional" value="Nacional" label="Nacional" [options]="origem"></p-radioButton> -->
+  <!--  <p-radioButton name="group1" value="Option 1" label="Option 1" [(ngModel)]="val1" inputId="opt1"></p-radioButton> -->
+            <div>
+              <div class="radio  radio-inline">
+                  <p-radioButton name="group1" value="Nacional" label="Nacional" [(ngModel)]="origem" inputId="origem"></p-radioButton>
+              </div>
+              <div class="radio  radio-inline">
+                  <p-radioButton name="group1" value="Internacional" label="Internacional" [(ngModel)]="origem" inputId="origem"></p-radioButton>
+              </div>
+            </div>
+        <!--  Selected Value = {{origem||'none'}} -->
+        </div>
 
+      <div class="ui-g-6 ui-md-2 ui-fluid">
+          <label>Estoque </label>
+          <input pInputText type="text" currencyMask [options]="{ prefix: '', thousands: '.', decimal: ',', allowNegative: false, precision: 0 }">
+        </div>
       <div class="ui-g-12 ui-lg-3 ui-md-4 ui-fluid">
           <label>Comissão </label>
           <div class="input-group">
@@ -73,10 +72,19 @@
         </div>
      </div>
 
-     <div class="ui-g-6 ui-md-2 ui-fluid">
-        <label>Estoque </label>
-        <input pInputText type="text" currencyMask [options]="{ prefix: '', thousands: '.', decimal: ',', allowNegative: false, precision: 0 }">
+     <div class="ui-g-12 ui-lg-3 ui-md-4 ui-fluid">
+        <label>Estilo</label>
+        <p-dropdown [options]="estilos" placeholder="Selecione"
+          [autoWidth]="false">
+        </p-dropdown>
+
       </div>
+
+      <div class="ui-g-1 ui-lg-1 ui-md-1 ui-fluid" >
+          <i class="fa fa-floppy-o" aria-hidden="true"  (click)="showDialog()"></i>
+      </div>
+
+
 
       <div class="ui-g-12">
         <button pButton type="submit" label="Salvar"></button>
@@ -86,4 +94,25 @@
     </div>
 
   </form>
+</div>
+
+<div class="content-section implementation">
+    <p-dialog header="Cadastro de Estilo" [(visible)]="display" modal="modal" [responsive]="true" [width]="300" [minWidth]="200">
+
+      <form autocomplete="off">
+          <label>Nome do Estilo </label>
+        <input pInputText type="text" name="nome" ngModel #nome="ngModel" required minlength="5">
+        <app-message [control]="nome" error="required"
+          text="Informe o Estilo"></app-message>
+        <app-message [control]="nome" error="minlength"
+          text="Mínimo de {{ nome.errors?.minlength?.requiredLength }} caracteres">
+        </app-message>
+
+      </form>
+           <p-footer>
+              <button pButton type="submit" label="Salvar"></button>
+           </p-footer>
+    </p-dialog>
+
+
 </div>

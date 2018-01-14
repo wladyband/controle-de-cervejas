@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CevejasCadastroComponent implements OnInit {
     // origemDoVinho: string = 'nacional' ;
-    origem: string = 'Nacional';
+    origem: String = 'Nacional';
 
   sabor = [
     { label: 'Adocicada', value: 'ADOCICADA' },
@@ -18,6 +18,17 @@ export class CevejasCadastroComponent implements OnInit {
     { label: 'Vinho Torcell', value: 1 },
     { label: 'AlphaVino', value: 2 },
   ];
+
+
+  display: Boolean = false;
+
+  showDialog() {
+      this.display = true;
+  }
+
+  hideDialog() {
+      this.display = false;
+  }
 
   constructor() { }
 

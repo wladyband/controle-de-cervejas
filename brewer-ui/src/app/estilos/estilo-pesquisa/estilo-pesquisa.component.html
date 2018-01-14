@@ -1,34 +1,40 @@
 <div class="container">
   <div class="ui-g">
-        <div class="ui-g-12">
-            <h1>Pesquisa de Estilos</h1>
-        </div>
+      <form autocomplete="off" (ngSubmit)="pesquisar()">
+            <div class="ui-g-12">
+                <h1>Pesquisa de Estilos</h1>
+            </div>
 
-        <div class="ui-g-12 ui-fluid" >
-            <label>Nome do Estilo</label>
-            <input pInputText type="text" >
-        </div>
+            <div class="ui-g-12 ui-fluid" >
+                <label>Nome do Estilo</label>
+                <input pInputText type="text" name="nome" [(ngModel)]="filtro.nome">
+            </div>
 
-        <div class="ui-g-12">
-           <button pButton type="submit" label="Pesquisar"></button>
-       </div>
-    </div>
+            <div class="ui-g-12">
+              <button pButton type="submit" label="Pesquisar"></button>
+          </div>
+      </form>
+  </div>
 
-    <div class="ui-g">
-        <div class="ui-g-12">
-            <p-dataTable  [value]="estilos" [paginator]="true" [rows]="2"
-            [responsive]="true">
-                <p-column field="nome" header="Nome dos Estilos"></p-column>
-                <p-column styleClass="col-acoes">
-                  <ng-template pTemplate="body">
-                    <a pButton icon="fa-pencil"  pTooltip="Editar" tooltipPosition="top"></a>
-                    <button pButton icon="fa-trash"  pTooltip="Excluir" tooltipPosition="top"></button>
-                  </ng-template>
-              </p-column>
-            </p-dataTable>
-        </div>
-        <div class="ui-g-12">
-          <a pButton label="Novo Estilo"></a>
-        </div>
-      </div>
+        <div class="ui-g">
+            <div class="ui-g-12">
+                <p-dataTable  [value]="estilos" [responsive]="true"
+                emptyMessage="Nenhum estilo encontrado"
+                [paginator]="true" [rows]="filtro.itensPorPagina"
+                [lazy]="true" [totalRecords]="totalRegistros"
+                (onLazyLoad)="aoMudarPagina($event)"
+                #tabela>
+                    <p-column field="nome" header="Nome dos Estilos"></p-column>
+                    <p-column styleClass="col-acoes">
+                      <ng-template let-estil="rowData" pTemplate="body">
+                        <a pButton icon="fa-pencil"  pTooltip="Editar" tooltipPosition="top" ></a>
+
+                      </ng-template>
+                  </p-column>
+                </p-dataTable>
+            </div>
+            <div class="ui-g-12">
+              <a pButton label="Novo Estilo"></a>
+            </div>
+          </div>
   </div>

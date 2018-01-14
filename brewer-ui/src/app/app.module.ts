@@ -10,7 +10,7 @@ import { NgModule } from '@angular/core';
 
 
 import { AppComponent } from './app.component';
-import { HttpModule } from '@angular/http/src/http_module';
+import { HttpModule } from '@angular/http';
 
 
 
@@ -26,10 +26,11 @@ import { HttpModule } from '@angular/http/src/http_module';
     CevejasModule,
     ClientesModule,
     UsuariosModule,
+    HttpModule,
 
     BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [EstiloService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
