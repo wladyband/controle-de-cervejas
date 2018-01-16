@@ -1,5 +1,5 @@
 <div class="container">
-  <form autocomplete="off">
+  <form #f="ngForm" autocomplete="off" (ngSubmit)="salvar(f)">
 
     <div class="ui-g">
       <div class="ui-g-12">
@@ -9,85 +9,101 @@
 
       <div class="ui-g-6 ui-md-2 ui-fluid">
         <label>SKU </label>
-        <input pInputText type="text">
+        <input pInputText type="text" name="sku" [(ngModel)]="cerveja.sku" required>
       </div>
 
       <div class="ui-g-12 ui-md-6 ui-fluid">
         <label>Nome </label>
-        <input pInputText type="text">
-      </div>
+        <input pInputText type="text" name="nome"  [(ngModel)]="cerveja.nome"
+        #nome="ngModel" required minlength="5">
 
-      <div class="ui-g-12 ui-fluid">
-        <label>Descrição</label>
-        <textarea pInputTextarea rows="3" name="descricao" ></textarea>
+        <app-message [control]="nome" error="required"
+                  text="Informe o nome"></app-message>
+                 <app-message [control]="nome" error="minlength"
+                   text="Mínimo de {{ nome.errors?.minlength?.requiredLength }} caracteres"></app-message>
+
+
       </div>
 
 
       <div class="ui-g-12 ui-lg-3 ui-md-4 ui-fluid">
         <label>Sabor</label>
         <p-dropdown [options]="sabor" placeholder="Selecione"
-          [autoWidth]="false">
+          [autoWidth]="false" name="sabor" [(ngModel)]="cerveja.sabor"  >
         </p-dropdown>
       </div>
 
-      <div class="ui-g-6 ui-lg-3 ui-md-4 ui-fluid">
-        <label >Teor Alcoólico </label>
-        <div class="input-group">
-          <input pInputText type="text">
-            <div class="input-group-addon">%</div>
+       <div class="ui-g-12 ui-lg-3 ui-md-4 ui-fluid">
+          <label>Estilo</label>
+          <p-dropdown [options]="estilos" placeholder="Selecione"
+            [autoWidth]="false" name="estilo" [(ngModel)]="cerveja.estilo.codigo" required>
+          </p-dropdown>
+
         </div>
+
+        <div class="ui-g-1 ui-lg-1 ui-md-1 ui-fluid" >
+          <i class="fa fa-floppy-o" aria-hidden="true"  (click)="showDialog()"></i>
       </div>
 
-      <div class="ui-g-12 ui-lg-3 ui-md-4 ui-fluid">
-            <label>Preço </label>
-            <div class="input-group">
-                <div class="input-group-addon" currencyMask [options]="{ prefix: '', thousands: '.', decimal: ',', allowNegative: false }">R$</div>
-                <input pInputText type="text" >
-          </div>
-      </div>
       <div class="ui-g-12 ui-lg-2 ui-md-4 ui-fluid">
           <label>Origem</label>
        <!--   <p-radioButton name="nacional" value="Nacional" label="Nacional" [options]="origem"></p-radioButton> -->
   <!--  <p-radioButton name="group1" value="Option 1" label="Option 1" [(ngModel)]="val1" inputId="opt1"></p-radioButton> -->
             <div>
               <div class="radio  radio-inline">
-                  <p-radioButton name="group1" value="Nacional" label="Nacional" [(ngModel)]="origem" inputId="origem"></p-radioButton>
+                  <p-radioButton name="group1" value="Nacional"
+                  label="Nacional" [(ngModel)]="origem" inputId="origem"
+                  name="origem" [(ngModel)]="cerveja.origem.codigo"></p-radioButton>
               </div>
               <div class="radio  radio-inline">
-                  <p-radioButton name="group1" value="Internacional" label="Internacional" [(ngModel)]="origem" inputId="origem"></p-radioButton>
+                  <p-radioButton name="group1" value="Internacional"
+                  label="Internacional" [(ngModel)]="origem" inputId="origem"
+                  name="origem" [(ngModel)]="cerveja.origem.codigo"></p-radioButton>
               </div>
             </div>
         <!--  Selected Value = {{origem||'none'}} -->
         </div>
 
-      <div class="ui-g-6 ui-md-2 ui-fluid">
-          <label>Estoque </label>
-          <input pInputText type="text" currencyMask [options]="{ prefix: '', thousands: '.', decimal: ',', allowNegative: false, precision: 0 }">
-        </div>
-      <div class="ui-g-12 ui-lg-3 ui-md-4 ui-fluid">
+
+
+        <div class="ui-g-12 ui-lg-3 ui-md-4 ui-fluid">
           <label>Comissão </label>
           <div class="input-group">
-              <input pInputText type="text" currencyMask [options]="{ prefix: '', thousands: '.', decimal: ',', allowNegative: false }">
+              <input pInputText type="text"
+              currencyMask [options]="{ prefix: '', thousands: '.', decimal: ',', allowNegative: false }"
+              name="comissao" [(ngModel)]="cerveja.comissao" required>
               <div class="input-group-addon">%</div>
         </div>
-     </div>
+    </div>
 
-     <div class="ui-g-12 ui-lg-3 ui-md-4 ui-fluid">
-        <label>Estilo</label>
-        <p-dropdown [options]="estilos" placeholder="Selecione"
-          [autoWidth]="false">
-        </p-dropdown>
 
+
+    <div class="ui-g-12 ui-lg-3 ui-md-4 ui-fluid">
+      <label >Teor Alcoólico </label>
+      <div class="input-group">
+        <input pInputText type="text"
+        name="teorAlcoolico" [(ngModel)]="cerveja.teorAlcoolico" required>
+          <div class="input-group-addon">%</div>
+      </div>
+    </div>
+
+    <div class="ui-g-12 ui-md-3 ui-fluid">
+        <label>Valor</label>
+        <input pInputText type="text" name="valor" placeholder="0,00"
+          currencyMask [options]="{ prefix: '', thousands: '.', decimal: ',', allowNegative: false }"
+          [(ngModel)]="cerveja.valor" required>
       </div>
 
-      <div class="ui-g-1 ui-lg-1 ui-md-1 ui-fluid" >
-          <i class="fa fa-floppy-o" aria-hidden="true"  (click)="showDialog()"></i>
-      </div>
 
-
+  <div class="ui-g-6 ui-md-2 ui-fluid">
+    <label>Estoque </label>
+    <input pInputText type="text"
+    currencyMask [options]="{ prefix: '', thousands: '.', decimal: ',', allowNegative: false, precision: 0 }"
+    name="quantidadeEstoque" [(ngModel)]="cerveja.quantidadeEstoque" required>
+  </div>
 
       <div class="ui-g-12">
-        <button pButton type="submit" label="Salvar"></button>
+        <button pButton type="submit" label="Salvar" [disabled]="f.invalid"></button>
         <button pButton type="button" label="Novo" class="ui-button-info"></button>
         <a href="javascript:;">Voltar para a pesquisa</a>
       </div>

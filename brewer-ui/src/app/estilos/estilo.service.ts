@@ -42,7 +42,11 @@ export class EstiloService {
       return resultado;
     });
   }
-
+  listarTodas(): Promise<any> {
+    return this.http.get(this.estilosUrl)
+      .toPromise()
+      .then(response => response.json().content);
+  }
 
 
 }

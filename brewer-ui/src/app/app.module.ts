@@ -1,4 +1,4 @@
-import { EstiloService } from './estilos/estilo.service';
+
 import { UsuariosModule } from './usuarios/usuarios.module';
 import { ClientesModule } from './clientes/clientes.module';
 import { CevejasModule } from './cevejas/cevejas.module';
@@ -30,7 +30,7 @@ import { HttpModule } from '@angular/http';
 
     BrowserAnimationsModule
   ],
-  providers: [EstiloService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

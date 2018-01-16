@@ -1,6 +1,8 @@
+import { ErroHandlerService } from './../../core/erro-handler.service';
 import { EstiloService, EstiloFiltro } from './../estilo.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { LazyLoadEvent } from 'primeng/components/common/api';
+
 
 
 
@@ -18,7 +20,8 @@ estilos = [];
 @ViewChild('tabela') grid;
 
 constructor(
-  private estiloService: EstiloService
+  private estiloService: EstiloService,
+  private errorHandler: ErroHandlerService,
 ) { }
 
 ngOnInit() {
@@ -30,7 +33,8 @@ ngOnInit() {
        .then(resultado => {
          this.totalRegistros = resultado.total;
         this.estilos = resultado.estilos;
-      });
+      })
+      .catch(erro => this.errorHandler.handle(erro));
    }
 
    aoMudarPagina(event: LazyLoadEvent) {
