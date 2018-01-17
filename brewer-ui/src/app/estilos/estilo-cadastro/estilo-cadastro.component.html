@@ -1,5 +1,5 @@
 <div class="container">
-  <form autocomplete="off">
+  <form #f="ngForm" autocomplete="off" (ngSubmit)="salvar(f)">
 
     <div class="ui-g">
       <div class="ui-g-12">
@@ -9,7 +9,7 @@
 
       <div class="ui-g-12 ui-md-9 ui-fluid">
         <label>Nome do Estilo </label>
-        <input pInputText type="text" name="nome"
+        <input pInputText type="text" name="nome" [(ngModel)]="estilo.nome"
         ngModel #nome="ngModel" required minlength="5">
 
         <app-message [control]="nome" error="required"
@@ -21,7 +21,7 @@
       </div>
 
       <div class="ui-g-12">
-        <button pButton type="submit" label="Salvar"></button>
+        <button pButton type="submit" label="Salvar" [disabled]="f.invalid"></button>
         <button pButton type="button" label="Novo" class="ui-button-info"></button>
         <a href="javascript:;">Voltar para a pesquisa</a>
       </div>

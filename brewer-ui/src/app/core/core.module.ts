@@ -7,6 +7,7 @@ import { CommonModule } from '@angular/common';
 import { ToastyModule } from 'ng2-toasty';
 import { SlideMenuModule, TabViewModule, PanelMenuModule, SidebarModule } from 'primeng/primeng';
 import { EstiloService } from '../estilos/estilo.service';
+import { CervejaService } from '../cevejas/cerveja.service';
 
 @NgModule({
   imports: [
@@ -25,6 +26,7 @@ import { EstiloService } from '../estilos/estilo.service';
   ],
   providers: [
     EstiloService,
+    CervejaService,
     ErroHandlerService
   ]
 })

@@ -1,11 +1,12 @@
 export class Estilo {
   codigo: number;
+  nome: string;
 }
 
 export class Cerveja {
   codigo: number;
   sku: string;
-  nome: string;
+  nome_cerveja: string;
   descricao: string;
   valor: number;
   teorAlcoolico: number;

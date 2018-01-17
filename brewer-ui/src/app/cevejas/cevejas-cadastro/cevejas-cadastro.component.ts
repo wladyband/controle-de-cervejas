@@ -1,3 +1,5 @@
+import { CervejaService } from './../cerveja.service';
+import { ToastyService } from 'ng2-toasty';
 import { FormControl } from '@angular/forms';
 import { Cerveja } from './../../core/model';
 import { ErroHandlerService } from './../../core/erro-handler.service';
@@ -35,7 +37,9 @@ export class CevejasCadastroComponent implements OnInit {
 
   constructor(
     private estiloService: EstiloService,
-    private erroHandler: ErroHandlerService
+    private erroHandler: ErroHandlerService,
+    private toasty: ToastyService,
+    private cervejasService: CervejaService
    ) { }
 
 
@@ -43,9 +47,15 @@ export class CevejasCadastroComponent implements OnInit {
    this.carregarEstilos();
   }
 
- salvar(form: FormControl) {
-  console.log(this.cerveja);
- }
+  salvar(form: FormControl) {
+    this.cervejasService.adicionar(this.cerveja)
+    .then(() => {
+      this.toasty.success('Cerveja adicionado com sucesso!');
+      form.reset();
+      this.cerveja = new Cerveja();
+    })
+    .catch(erro => this.erroHandler.handle(erro));
+   }
 
   carregarEstilos() {
     return this.estiloService.listarTodas()

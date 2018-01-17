@@ -22,11 +22,12 @@ import { HttpModule } from '@angular/http';
   imports: [
     BrowserModule,
     EstilosModule,
-    CoreModule,
     CevejasModule,
     ClientesModule,
     UsuariosModule,
     HttpModule,
+    CoreModule,
+
 
     BrowserAnimationsModule
   ],

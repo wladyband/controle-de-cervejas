@@ -1,4 +1,5 @@
-import { Http, URLSearchParams } from '@angular/http';
+import { Estilo } from './../core/model';
+import { Http, URLSearchParams, Headers } from '@angular/http';
 import { Injectable } from '@angular/core';
 
 import 'rxjs/add/operator/toPromise';
@@ -13,6 +14,8 @@ export class EstiloFiltro {
 export class EstiloService {
 
   estilosUrl = 'http://localhost:8080/estilos';
+
+
 
 
   constructor(private http: Http) { }
@@ -46,6 +49,15 @@ export class EstiloService {
     return this.http.get(this.estilosUrl)
       .toPromise()
       .then(response => response.json().content);
+  }
+
+  adicionar(estilo: Estilo): Promise<Estilo> {
+    const headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+        return this.http.post(this.estilosUrl,
+        JSON.stringify(estilo),  { headers })
+      .toPromise()
+      .then(response =>  response.json());
   }
 
 
