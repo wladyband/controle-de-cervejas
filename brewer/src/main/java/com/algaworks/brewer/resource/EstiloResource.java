@@ -1,4 +1,4 @@
-package com.algaworks.brewer.resource;
+	package com.algaworks.brewer.resource;
 
 import java.util.Arrays;
 import java.util.List;
@@ -67,7 +67,7 @@ public class EstiloResource {
 	}
 	
 	@ExceptionHandler({ NomeEstiloJaCadastradoException.class })
-	public ResponseEntity<Object> handlePessoaInexistenteOuInativaException(NomeEstiloJaCadastradoException ex) {
+	public ResponseEntity<Object> handleEstiloInexistenteException(NomeEstiloJaCadastradoException ex) {
 		String mensagemUsuario = messageSource.getMessage("estilo.existente", null, LocaleContextHolder.getLocale());
 		String mensagemDesenvolvedor = ex.toString();
 		List<Erro> erros = Arrays.asList(new Erro(mensagemUsuario, mensagemDesenvolvedor));

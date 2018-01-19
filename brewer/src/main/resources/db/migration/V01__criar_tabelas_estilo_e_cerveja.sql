@@ -14,7 +14,7 @@ INSERT INTO estilo (nome) VALUES ('Pilsner');
 CREATE TABLE cerveja(
     codigo serial,
     sku VARCHAR(50) NOT NULL,
-    nome VARCHAR(80) NOT NULL,
+    nome_cerveja VARCHAR(80) NOT NULL,
     descricao VARCHAR(50) NOT NULL,
     valor DECIMAL(10, 2) NOT NULL,
     teor_alcoolico DECIMAL(10, 2) NOT NULL,
@@ -30,7 +30,7 @@ CREATE TABLE cerveja(
 );
 
 
-INSERT INTO cerveja( sku, nome, descricao, valor, teor_alcoolico, comissao, quantidade_estoque, sabor, origem, codigo_estilo, foto, content_type) values ( 'XX1234', 'wladimir', 'veio de Recife', 35.00, 0.5, 15.0, 10.0, 'ADOCICADA', 'NACIONAL', 1, null, null);
-INSERT INTO cerveja( sku, nome, descricao, valor, teor_alcoolico, comissao, quantidade_estoque, sabor, origem, codigo_estilo, foto, content_type) values ( 'JJ7895', 'Marcelo', 'veio de Minas', 35.00, 0.5, 15.0, 10.0, 'ADOCICADA', 'NACIONAL', 2, null, null);
-INSERT INTO cerveja( sku, nome, descricao, valor, teor_alcoolico, comissao, quantidade_estoque, sabor, origem, codigo_estilo, foto, content_type) values ( 'JY1265', 'Douglas', 'veio de Rio Grande do Norte', 20.00, 0.5, 10.0, 15.0, 'ADOCICADA', 'NACIONAL', 3, null, null);
-INSERT INTO cerveja( sku, nome, descricao, valor, teor_alcoolico, comissao, quantidade_estoque, sabor, origem, codigo_estilo, foto, content_type) values ( 'VG9887', 'John', 'Direto do EUA', 35.00, 0.5, 15.0, 10.0, 'ADOCICADA', 'NACIONAL', 4, null, null);
+INSERT INTO cerveja( sku, nome_cerveja, descricao, valor, teor_alcoolico, comissao, quantidade_estoque, sabor, origem, codigo_estilo, foto, content_type) values ( 'XX1234', 'wladimir', 'veio de Recife', 35.00, 0.5, 15.0, 10.0, 'ADOCICADA', 'NACIONAL', 1, null, null);
+INSERT INTO cerveja( sku, nome_cerveja, descricao, valor, teor_alcoolico, comissao, quantidade_estoque, sabor, origem, codigo_estilo, foto, content_type) values ( 'JJ7895', 'Marcelo', 'veio de Minas', 35.00, 0.5, 15.0, 10.0, 'ADOCICADA', 'NACIONAL', 2, null, null);
+INSERT INTO cerveja( sku, nome_cerveja, descricao, valor, teor_alcoolico, comissao, quantidade_estoque, sabor, origem, codigo_estilo, foto, content_type) values ( 'JY1265', 'Douglas', 'veio de Rio Grande do Norte', 20.00, 0.5, 10.0, 15.0, 'ADOCICADA', 'NACIONAL', 3, null, null);
+INSERT INTO cerveja( sku, nome_cerveja, descricao, valor, teor_alcoolico, comissao, quantidade_estoque, sabor, origem, codigo_estilo, foto, content_type) values ( 'VG9887', 'John', 'Direto do EUA', 35.00, 0.5, 15.0, 10.0, 'ADOCICADA', 'NACIONAL', 4, null, null);

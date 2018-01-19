@@ -41,7 +41,7 @@ public class Cerveja implements Serializable {
 	private String sku;
 
 	@NotBlank
-	private String nome;
+	private String nome_cerveja;
 
 	@NotBlank(message = "A descrição é obrigatória")
 	@Size(max = 50, message = "O tamanho da descrição deve estar entre 1 e 50")
@@ -111,12 +111,14 @@ public class Cerveja implements Serializable {
 		this.sku = sku;
 	}
 
-	public String getNome() {
-		return nome;
+	
+
+	public String getNome_cerveja() {
+		return nome_cerveja;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setNome_cerveja(String nome_cerveja) {
+		this.nome_cerveja = nome_cerveja;
 	}
 
 	public String getDescricao() {

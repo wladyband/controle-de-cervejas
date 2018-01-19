@@ -11,9 +11,9 @@ public abstract class Cerveja_ {
 
 	public static volatile SingularAttribute<Cerveja, Long> codigo;
 	public static volatile SingularAttribute<Cerveja, Estilo> estilo;
+	public static volatile SingularAttribute<Cerveja, String> nome_cerveja;
 	public static volatile SingularAttribute<Cerveja, BigDecimal> valor;
 	public static volatile SingularAttribute<Cerveja, Origem> origem;
-	public static volatile SingularAttribute<Cerveja, String> nome;
 	public static volatile SingularAttribute<Cerveja, String> descricao;
 	public static volatile SingularAttribute<Cerveja, BigDecimal> comissao;
 	public static volatile SingularAttribute<Cerveja, String> foto;
