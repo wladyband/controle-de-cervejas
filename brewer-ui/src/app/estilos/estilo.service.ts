@@ -3,7 +3,6 @@ import { Http, URLSearchParams, Headers } from '@angular/http';
 import { Injectable } from '@angular/core';
 
 import 'rxjs/add/operator/toPromise';
-
 export class EstiloFiltro {
   nome: string;
   pagina = 0;
@@ -57,8 +56,17 @@ export class EstiloService {
         return this.http.post(this.estilosUrl,
         JSON.stringify(estilo),  { headers })
       .toPromise()
-      .then(response =>  response.json());
-  }
+      .then(response =>  response.json())
+      .catch( response => {
+          if ( response.status === 400 ) {
+              const responseJson = response.json();
+              if ( responseJson[0].mensagemUsuario === 'Nome do estilo já cadastrado' ) {
+                  return Promise.reject('Nome do estilo já cadastrado');
+              }
+          }
+          return Promise.reject (response);
+      });
+   }
 
 
 }

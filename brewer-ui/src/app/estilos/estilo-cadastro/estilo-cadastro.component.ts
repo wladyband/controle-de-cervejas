@@ -1,10 +1,13 @@
+import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { Estilo } from './../../core/model';
 import { ToastyService } from 'ng2-toasty';
+
+import { Estilo } from './../../core/model';
+
 import { ErroHandlerService } from './../../core/erro-handler.service';
 import { EstiloService } from './../estilo.service';
 
-import { Component, OnInit } from '@angular/core';
+
 
 
 @Component({
