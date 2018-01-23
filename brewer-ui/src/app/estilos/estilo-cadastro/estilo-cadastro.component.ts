@@ -35,7 +35,7 @@ export class EstiloCadastroComponent implements OnInit {
   salvar(form: FormControl) {
     this.estiloService.adicionar(this.estilo)
     .then(() => {
-      this.toasty.success('Cerveja adicionado com sucesso!');
+      this.toasty.success('Estilo adicionado com sucesso!');
       form.reset();
       this.estilo = new Estilo();
     })
