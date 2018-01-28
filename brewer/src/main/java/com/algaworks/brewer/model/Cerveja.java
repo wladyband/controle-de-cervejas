@@ -26,6 +26,8 @@ import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.format.annotation.NumberFormat;
 import org.springframework.util.StringUtils;
 
+import com.algaworks.brewer.validation.SKU;
+
 @Entity
 @Table(name = "cerveja")
 public class Cerveja implements Serializable {
@@ -36,11 +38,11 @@ public class Cerveja implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long codigo;
 
-	// @SKU
+	@SKU
 	@NotBlank
 	private String sku;
 
-	@NotBlank
+	@NotBlank(message = "O nome da cerveja é obrigatória")
 	private String nome_cerveja;
 
 	@NotBlank(message = "A descrição é obrigatória")
