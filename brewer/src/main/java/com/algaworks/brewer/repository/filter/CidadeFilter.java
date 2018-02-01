@@ -3,7 +3,7 @@ package com.algaworks.brewer.repository.filter;
 import com.algaworks.brewer.model.Estado;
 
 public class CidadeFilter {
-
+	
 	private Estado estado;
 	private String nome;
 
@@ -22,4 +22,5 @@ public class CidadeFilter {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+
 }
