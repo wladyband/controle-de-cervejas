@@ -1,33 +1,16 @@
-import { ErroHandlerService } from './erro-handler.service';
-import { FormsModule } from '@angular/forms';
-import { ButtonModule } from 'primeng/components/button/button';
-import { NavbarComponent } from './navbar/navbar.component';
+import { CidadesService } from './../cidades/cidades.service';
+import { EstilosService } from './../estilos/estilos.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ToastyModule } from 'ng2-toasty';
-import { SlideMenuModule, TabViewModule, PanelMenuModule, SidebarModule } from 'primeng/primeng';
-import { EstiloService } from '../estilos/estilo.service';
-import { CervejaService } from '../cevejas/cerveja.service';
 
 @NgModule({
   imports: [
-    CommonModule,
-    FormsModule,
-    PanelMenuModule,
-    SidebarModule,
-    ButtonModule,
-    TabViewModule,
-    ToastyModule.forRoot(),
+    CommonModule
   ],
-  declarations: [NavbarComponent],
-  exports: [
-    NavbarComponent,
-    ToastyModule
-  ],
+  declarations: [],
   providers: [
-    EstiloService,
-    CervejaService,
-    ErroHandlerService
+    EstilosService,
+    CidadesService
   ]
 })
 export class CoreModule { }

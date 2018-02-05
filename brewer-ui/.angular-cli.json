@@ -19,22 +19,17 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
-
         "../node_modules/bootstrap/dist/css/bootstrap.min.css",
-        "../node_modules/ng2-toasty/style-bootstrap.css",
         "../node_modules/font-awesome/css/font-awesome.min.css",
         "../node_modules/primeng/resources/primeng.min.css",
+        "../node_modules/ng2-toasty/style-bootstrap.css",
         "../node_modules/primeng/resources/themes/omega/theme.css",
-        "../node_modules/extra/bootstrap-switch.css",
-        "../node_modules/uikit/dist/css/uikit.min.css",
         "styles.css"
       ],
       "scripts": [
-        "../node_modules/jquery/dist/jquery.min.js",
-        "../node_modules/uikit/dist/js/uikit.min.js",
-        "../node_modules/uikit/dist/js/uikit-icons.min.js",
+        "../node_modules/popper.js/dist/umd/popper.js",
         "../node_modules/tether/dist/js/tether.min.js",
-        "../node_modules/extra/bootstrap-switch.js",
+        "../node_modules/jquery/dist/jquery.min.js",
         "../node_modules/bootstrap/dist/js/bootstrap.min.js"
       ],
       "environmentSource": "environments/environment.ts",

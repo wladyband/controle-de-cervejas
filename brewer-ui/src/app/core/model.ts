@@ -16,3 +16,37 @@ export class Cerveja {
   sabor = 'ADOCICADA';
   estilo = new Estilo();
 }
+
+
+export class Estado {
+  codigo: number;
+  nome: string;
+  sigla: string;
+
+}
+
+
+export class Cidade {
+  codigo: number;
+  nome: string;
+  estado = new Estado();
+  codigoEstado: string;
+}
+
+
+
+
+
+export class Cliente {
+  codigo: number;
+  nome: string;
+  tipoPessoa: 'Física';
+  cpfOuCnpj: string;
+  telefone: string;
+  email: string;
+  logradouro: string;
+  numero: number;
+  complemento: string;
+  cep: string;
+  cidade = new Cidade();
+}

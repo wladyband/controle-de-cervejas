@@ -1,18 +1,19 @@
 
-import { UsuariosModule } from './usuarios/usuarios.module';
-import { ClientesModule } from './clientes/clientes.module';
-import { CevejasModule } from './cevejas/cevejas.module';
 import { CoreModule } from './core/core.module';
+
+import { HttpModule } from '@angular/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { EstilosModule } from './estilos/estilos.module';
+
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+import { CidadesModule } from './cidades/cidades.module';
+import { EstilosModule } from './estilos/estilos.module';
+import { CervejasModule } from './cervejas/cervejas.module';
+
+
 
 import { AppComponent } from './app.component';
-import { HttpModule } from '@angular/http';
-
-
 
 
 @NgModule({
@@ -21,15 +22,12 @@ import { HttpModule } from '@angular/http';
   ],
   imports: [
     BrowserModule,
-    EstilosModule,
-    CevejasModule,
-    ClientesModule,
-    UsuariosModule,
     HttpModule,
     CoreModule,
-
-
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    CervejasModule,
+    EstilosModule,
+    CidadesModule
   ],
   providers: [],
   bootstrap: [AppComponent]
