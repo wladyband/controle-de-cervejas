@@ -27,14 +27,20 @@ export class Estado {
 
 
 export class Cidade {
-  codigo: number;
-  nome: string;
-  estado = new Estado();
-  codigoEstado: string;
+    codigo: number;
+    nome: string;
+    codigoEstado: string;
+    estado = new Estado();
 }
 
 
+export class State {
+  constructor(public id: number, public countryid: number, public name: string) { }
+}
 
+export class Country {
+  constructor(public id: number, public name: string) { }
+}
 
 
 export class Cliente {

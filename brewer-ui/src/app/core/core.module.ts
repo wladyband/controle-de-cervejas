@@ -1,16 +1,37 @@
+import { ButtonModule } from 'primeng/components/button/button';
+import { PanelMenuModule, SidebarModule, TabViewModule } from 'primeng/primeng';
+import { FormsModule } from '@angular/forms';
+import { NavbarComponent } from './navbar/navbar.component';
 import { CidadesService } from './../cidades/cidades.service';
 import { EstilosService } from './../estilos/estilos.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { CervejasService } from '../cervejas/cervejas.service';
+import { ErrorHandlerService } from './error-handler.service';
+import { ToastyModule } from 'ng2-toasty';
+
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule,
+    PanelMenuModule,
+    SidebarModule,
+    ButtonModule,
+    TabViewModule,
+    ToastyModule.forRoot()
   ],
-  declarations: [],
+  declarations: [NavbarComponent],
+  exports: [
+    NavbarComponent,
+    ToastyModule
+    ],
   providers: [
     EstilosService,
-    CidadesService
+    CidadesService,
+    CervejasService,
+    ErrorHandlerService
+
   ]
 })
 export class CoreModule { }

@@ -1,9 +1,9 @@
-import { Estado, Cidade } from './../../core/model';
+import { Estado, Cidade} from './../../core/model';
 import { CidadesService } from './../cidades.service';
 import { Component, OnInit } from '@angular/core';
+
 import 'rxjs/add/operator/map';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/observable/of';
+
 
 
 @Component({
@@ -14,45 +14,37 @@ import 'rxjs/add/observable/of';
 })
 export class CidadesPesquisaComponent implements OnInit {
 
+  uf: string;
+
   cidades: Cidade[];
-  estados: Estado[] = [];
+  estados: Estado[];
 
-
-  constructor(private cidadesService: CidadesService) {
-    this.cidades = this.cidadesService.listarTodasCidades;
-   }
+  constructor(private cidadesService: CidadesService) { }
 
   ngOnInit() {
-        this.carregarCidades();
-        this.carregarEstados();
-  }
-
-
-
-  carregarCidades() {
-    this.cidadesService.listarTodasCidades()
-      .subscribe(dados => {
-       this.cidades = dados;
-      });
-  }
-
-
-  carregarEstados() {
     this.cidadesService.listarTodosEstados()
-    .subscribe(dados => {
-      this.estados = dados;
-     });
+    .subscribe(estados => this.estados = estados);
   }
 
-  onSelect(countryid) {
-    this.estados = this.cidadesService.listarTodasCidades.filter((item)=> item.countryid == countryid);
+  buscarCidades() {
+    console.log("Estado: " + this.uf);
+      this.cidades = [];
+
+     if(this.uf) {
+        this.cidadesService.listarTodasCidades()
+        .subscribe(cidades => {
+          if (cidades.length > 0) {
+            console.log("Qtd total de cidades: " + cidades.length);
+          }
+          for (let cidade of cidades) {
+            if ( parseInt( cidade.codigoEstado) == parseInt(this.uf)) {
+              console.log(cidade);
+              this.cidades.push(cidade);
+          }
+        }
+      });
+    }
   }
-
-  onSelect(countryid) {
-    this.states = this._dataService.getStates().filter((item)=> item.countryid == countryid);
-  }
-
-
 }
 
 
@@ -64,6 +56,20 @@ export class CidadesPesquisaComponent implements OnInit {
 
   }
 
+carregarCidades() {
+    this.cidadesService.listarTodasCidades()
+      .subscribe(dados => {
+       console.log(this.cidades = dados);
+      });
+  }
+
+
+  carregarEstados() {
+    this.cidadesService.listarTodosEstados()
+    .subscribe(dados => {
+      this.estados = dados;
+     });
+  }
 
 
   console.log(this.cidades.map((e) => <any>e.codigoEstado));

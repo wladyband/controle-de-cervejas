@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 
 import { CoreModule } from './core/core.module';
 
@@ -22,12 +23,13 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
-    HttpModule,
+    HttpClientModule,
     CoreModule,
     BrowserAnimationsModule,
     CervejasModule,
     EstilosModule,
-    CidadesModule
+    CidadesModule,
+    CervejasModule
   ],
   providers: [],
   bootstrap: [AppComponent]
