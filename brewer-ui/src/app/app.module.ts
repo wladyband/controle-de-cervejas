@@ -1,8 +1,10 @@
+import { ClientesModule } from './clientes/clientes.module';
 import { HttpClientModule } from '@angular/common/http';
+import { HttpModule } from '@angular/http';
 
 import { CoreModule } from './core/core.module';
 
-import { HttpModule } from '@angular/http';
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { BrowserModule } from '@angular/platform-browser';
@@ -24,12 +26,15 @@ import { AppComponent } from './app.component';
   imports: [
     BrowserModule,
     HttpClientModule,
+
+    HttpModule,
     CoreModule,
     BrowserAnimationsModule,
     CervejasModule,
     EstilosModule,
     CidadesModule,
-    CervejasModule
+    CervejasModule,
+    ClientesModule
   ],
   providers: [],
   bootstrap: [AppComponent]

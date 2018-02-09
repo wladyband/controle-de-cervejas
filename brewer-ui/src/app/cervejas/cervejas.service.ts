@@ -1,7 +1,7 @@
-import { HttpHeaders } from '@angular/common/http';
-import { Http } from '@angular/http';
+import { Http, Headers } from '@angular/http';
 import { Cerveja } from './../core/model';
 import { Injectable } from '@angular/core';
+
 
 @Injectable()
 export class CervejasService {
@@ -10,10 +10,10 @@ export class CervejasService {
 
   constructor(private http: Http) { }
     adicionar(cerveja: Cerveja): Promise<Cerveja> {
-    const headers = new HttpHeaders();
+    const headers = new Headers();
     headers.append('Content-Type', 'application/json');
         return this.http.post(this.cervejasUrl,
-        JSON.stringify(cerveja),  { HttpHeaders })
+        JSON.stringify(cerveja),  { headers })
       .toPromise()
       .then(response =>  response.json())
       .catch( response => {
@@ -62,5 +62,9 @@ export class CervejasService {
         return Promise.reject (response);
     });
   }
-
 }
+
+
+//.then(response => { console.log(response.json());
+ // return response.json();
+ //});

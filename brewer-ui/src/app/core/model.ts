@@ -1,3 +1,4 @@
+
 export class Estilo {
   codigo: number;
   nome: string;
@@ -34,13 +35,7 @@ export class Cidade {
 }
 
 
-export class State {
-  constructor(public id: number, public countryid: number, public name: string) { }
-}
 
-export class Country {
-  constructor(public id: number, public name: string) { }
-}
 
 
 export class Cliente {
@@ -50,9 +45,15 @@ export class Cliente {
   cpfOuCnpj: string;
   telefone: string;
   email: string;
+  endereco = new Endereco();
+
+}
+
+export class Endereco {
   logradouro: string;
   numero: number;
   complemento: string;
   cep: string;
   cidade = new Cidade();
+
 }

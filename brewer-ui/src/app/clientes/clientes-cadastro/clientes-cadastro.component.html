@@ -1,0 +1,136 @@
+<div class="container">
+  <form #f="ngForm" autocomplete="off" (ngSubmit)="salvar(f)">
+
+    <div class="ui-g">
+      <div class="ui-g-12">
+        <h1>Novo Cliente</h1>
+      </div>
+
+
+      <div class="ui-g-12  ui-fluid">
+        <label>Nome </label>
+        <input pInputText type="text" name="nome" [(ngModel)]="cliente.nome"
+          ngModel #nome="ngModel" required minlength="5">
+
+      <app-message [control]="nome" error="required"
+       text="Informe um nome"></app-message>
+      <app-message [control]="nome" error="minlength"
+       text="Mínimo de {{ nome.errors?.minlength?.requiredLength }} caracteres"></app-message>
+
+      </div>
+
+      <div class="ui-g-12 ui-lg-3 ui-md-6 ui-fluid">
+        <label>Tipo pessoa</label>
+          <div class="ui-g">
+            <div class="ui-g-12 ui-md-6">
+                <p-radioButton name="tipoPessoa" [(ngModel)]="cliente.tipoPessoa" (click)=" statusMask()" value="FISICA" label="Física" [(ngModel)]="tipo" inputId="tipo"></p-radioButton>
+            </div>
+
+
+            <div class="ui-g-12 ui-md-6">
+                <p-radioButton name="tipoPessoa" [(ngModel)]="cliente.tipoPessoa" (click)=" statusMask()" value="JURIDICA" label="Juridica" [(ngModel)]="tipo" inputId="tipo"></p-radioButton>
+            </div>
+          </div>
+
+    </div>
+
+
+      <div class="ui-g-12 ui-lg-8 ui-md-6 ui-fluid" >
+        <label >{{ tipo === 'FISICA' ? 'CPF' : 'CNPJ' }}</label>
+        <div *ngIf="statusCampo">
+            <input type="text" class="form-control" value="teste3" disabled/>
+          </div>
+        <div *ngIf="fisica">
+            <p-inputMask  [(ngModel)]="cliente.cpfOuCnpj" mask="999.999.999-99" type="text" name="cpfOuCnpj" ></p-inputMask>
+        </div>
+        <div *ngIf="juridica">
+            <p-inputMask   [(ngModel)]="cliente.cpfOuCnpj" mask="99.999.999/9999-99" type="text" name="cpfOuCnpj" ></p-inputMask>
+        </div>
+      </div>
+
+
+      <div class="ui-g-12 ui-lg-3 ui-md-4 ui-fluid">
+        <label>Telefone</label>
+        <p-inputMask  [(ngModel)]="cliente.telefone"  mask="(99)9999-9999" type="text" name="telefone" ngModel #telefone="ngModel" required></p-inputMask>
+        <app-message [control]="telefone" error="required"
+        text="Informe um telefone"></app-message>
+      </div>
+
+      <div class="ui-g-12 ui-md-8 ui-fluid">
+        <label>Email</label>
+        <input pInputText [(ngModel)]="cliente.email" type="text" name="email"
+          ngModel #email="ngModel" required minlength="7">
+
+           <app-message [control]="email" error="required"
+          text="Informe um email"></app-message>
+        <app-message [control]="email" error="minlength"
+          text="Mínimo de {{ email.errors?.minlength?.requiredLength }} caracteres"></app-message>
+      </div>
+
+
+  <div class="ui-g-12 ui-lg-4 ui-md-4 ui-fluid">
+    <label>Logradouro</label>
+    <input pInputText [(ngModel)]="cliente.endereco.logradouro" type="text" name="logradouro"
+    ngModel #logradouro="ngModel" required minlength="7" >
+
+    <app-message [control]="logradouro" error="required"
+      text="Informe um logradouro"></app-message>
+    <app-message [control]="logradouro" error="minlength"
+      text="Mínimo de {{ logradouro.errors?.minlength?.requiredLength }} caracteres"></app-message>
+  </div>
+
+
+      <div class="ui-g-12 ui-lg-3 ui-md-4 ui-fluid">
+        <label>Numero</label>
+        <input pInputText  [(ngModel)]="cliente.endereco.numero" type="text" name="numero"
+        ngModel #numero="ngModel" required>
+
+         <app-message [control]="numero" error="required"
+          text="Informe um numero"></app-message>
+
+      </div>
+
+
+      <div class="ui-g-12 ui-lg-4 ui-md-4 ui-fluid">
+        <label>Complemento</label>
+        <input pInputText [(ngModel)]="cliente.endereco.complemento" name="complemento" type="text">
+      </div>
+
+      <div class="ui-g-12 ui-lg-3 ui-md-4 ui-fluid">
+        <label>CEP</label>
+        <p-inputMask [(ngModel)]="cliente.endereco.cep"  mask="99999-999" type="text" name="cep" ngModel #cep="ngModel" required></p-inputMask>
+        <app-message [control]="cep" error="required"
+        text="Informe um cep"></app-message>
+      </div>
+
+      <div class="ui-g-12 ui-lg-3 ui-md-4 ui-fluid">
+        <label>Estado</label>
+          <div>
+              <select   class="form-control"  name="estado" id="estado" [(ngModel)]="uf" (change)="buscarCidades()">
+                      <option   *ngFor="let estado of estados" [value]="estado.codigo">{{estado.nome}}</option>
+                </select>
+          </div>
+      </div>
+
+      <div class="ui-g-12 ui-lg-3 ui-md-4 ui-fluid">
+        <label>Cidade</label>
+        <div>
+                <select [(ngModel)]="cliente.endereco.cidade.estado.codigo"  id="cidade" class="form-control"  name="cidade">
+                              <option  *ngFor="let cidade of cidades" [value]="cidade.codigoEstado">{{cidade.nome}}</option>
+                </select>
+        </div>
+      </div>
+
+
+
+      <div class="ui-g-12">
+        <button pButton type="submit" label="Salvar" [disabled]="f.invalid"></button>
+        <button pButton type="button" label="Novo" class="ui-button-info"></button>
+        <a href="javascript:;">Voltar para a pesquisa</a>
+      </div>
+    </div>
+
+  </form>
+</div>
+
+

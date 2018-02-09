@@ -1,3 +1,4 @@
+import { ClientesService } from './../clientes/clientes.service';
 import { ButtonModule } from 'primeng/components/button/button';
 import { PanelMenuModule, SidebarModule, TabViewModule } from 'primeng/primeng';
 import { FormsModule } from '@angular/forms';
@@ -30,6 +31,7 @@ import { ToastyModule } from 'ng2-toasty';
     EstilosService,
     CidadesService,
     CervejasService,
+    ClientesService,
     ErrorHandlerService
 
   ]
